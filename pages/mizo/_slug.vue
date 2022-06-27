@@ -1,0 +1,440 @@
+<template>
+  <client-only>
+    <div v-if="loading" class="container mx-auto my-4">
+      <!-- <div class="w-1/12 animate-pulse  mx-auto"> LOADING ................ </div>
+   -->
+      <step-loader></step-loader>
+    </div>
+    <div v-else class="container lg:container mx-auto">
+      <div class="md:mx-auto lg:mx-40 xl:mx-40">
+        <!-- edit delete draft -->
+        <span class="flex flex-row lg:my-2 mt-20 " >
+
+        <!-- DELETE MODAL -->
+          <!-- The button to open modal -->
+          <label for="my-modal-delete" class="btn btn-sm btn-ghost modal-button"
+            >Delete</label
+          >
+          <!-- Put this part before </body> tag -->
+          <input type="checkbox" id="my-modal-delete" class="modal-toggle" />
+          <div class="modal modal-bottom sm:modal-middle">
+            <div class="modal-box">
+              <h3 class="font-bold text-lg">Delete</h3>
+              <p class="py-4">Are you sure you want to delete?</p>
+              <div class="modal-action">
+                <label for="my-modal-delete" class="btn btn-sm">No</label>
+
+                <label
+                  for="my-modal-delete"
+                  @click.prevent="deletePost"
+                  class="btn btn-sm btn-ghost"
+                  >Yes</label
+                >
+              </div>
+            </div>
+          </div>
+
+           <div class="mx-1 "></div>
+          <!-- eof -->
+
+          <nuxt-link
+            :to="{ name: 'post-Edit-id', params: { id: post.post.id } }"
+          >
+            <p class="btn btn-sm btn-primary ">Edit</p></nuxt-link
+          >
+           <div class="mx-1"></div>
+
+
+          <!-- DRAFT MODAL -->
+
+          <label for="my-modal-draft" class="btn btn-sm  rounded-lg modal-button"
+            >Unpublish</label
+          >
+
+          <!-- Put this part before </body> tag -->
+          <input type="checkbox" id="my-modal-draft" class="modal-toggle" />
+          <div class="modal modal-bottom sm:modal-middle">
+            <div class="modal-box">
+              <h3 class="font-bold text-lg">Draft</h3>
+              <p class="py-4">Are you sure you want to move to draft?</p>
+              <div class="modal-action">
+                <label for="my-modal-draft" class="btn btn-sm">No</label>
+
+                <label
+                  for="my-modal-draft"
+                  @click.prevent="moveToDrafts"
+                  class="btn btn-sm btn-ghost"
+                  >Yes</label
+                >
+              </div>
+            </div>
+          </div>
+
+          <!-- EOF -->
+        </span>
+
+        <!-- Heading? -->
+
+        <div class="mx-2 lg:mx-0 mb-3">
+          <!-- style="font-family: 'Scheherazade New'" -->
+          <h1
+            class="break-words text-left text-current font-bold text-3xl lg:text-5xl py-4 title"
+          >
+            {{ post.post.title }}
+          </h1>
+          <div class="flex flex-row justify-between lg:justify-start">
+            <nuxt-link
+              :to="{ name: 'user-user', params: { user: post.post.author } }"
+            >
+              <image-author
+                :author="post.post.author"
+                :authorphoto="post.post.authorphoto"
+                :date="dateformat(post.post.date)"
+                class="mb-1"
+              ></image-author>
+            </nuxt-link>
+
+            <!-- <span v-if="this.$store.getters.loggedIn"> -->
+            <bookmark
+              class="mr-3"
+              v-if="post.post.id"
+              :id="post.post.id"
+            ></bookmark>
+            <!-- </span> -->
+            <!-- <span v-else>
+    <bookmark class="mr-3 opacity-50 disabled" v-if="post.id" @click="loginalert"></bookmark>
+
+    </span> -->
+            <!-- <login-modal v-if="modalalert" :activation="modalalert"></login-modal> -->
+          </div>
+        </div>
+        <!-- eol heading/ -->
+
+        <img
+          :src="post.post.coverimage"
+          class="w-full h-auto"
+          alt=""
+          srcset=""
+        />
+
+        <p
+          class="ml-2 text-left flex flex-inline my-1 mt-2 justify-between lg:justify-start lg:space-x-4 mr-3"
+        >
+          <!-- <like v-if="post.id" :id="post.id"></like> -->
+
+          <share></share>
+        </p>
+
+        <!-- ////////////////////////////////////////////// -->
+
+        <!-- body -->
+
+        <div id="editor"></div>
+
+        <div class="mx-2 my-1 text-left">
+          <!-- Category -->
+          <div
+            v-if="post.post.category"
+            class="inline-flex items-center bg-white leading-none text-pink-600 rounded-full p-0 shadow text-teal text-sm"
+          >
+            <nuxt-link
+              :to="{
+                name: 'category-category',
+                params: { category: post.post.category },
+              }"
+            >
+              <span
+                class="inline-flex bg-pink-600 text-white rounded-full h-6 px-3 p-4 justify-center items-center"
+                >{{ post.post.category }}</span
+              >
+            </nuxt-link>
+          </div>
+          <br />
+          <!-- TAGS -->
+          <div class="space-x-2 my-4">
+            <span v-for="tag in post.post.tags" :key="tag.id">
+              <nuxt-link :to="{ name: 'tags-tag', params: { tag: tag } }">
+                <span
+                  class="text-xs font-light py-2 px-2 bg-gray-100 text-gray-600 rounded"
+                  >#{{ tag }}</span
+                >
+              </nuxt-link>
+            </span>
+          </div>
+          <hr />
+          <!-- Recommendation -->
+          <h2
+            v-if="post.related.length"
+            class="text-center font-bold text-2xl py-3"
+          >
+            Similar Post
+          </h2>
+          <div class="flex md:flex-row sm:flex-col flex-wrap justify-center">
+            <div class="" v-for="sim in post.related" :key="sim.id">
+              <nuxt-link
+                :to="{ name: 'mizo-slug', params: { slug: sim.slug } }"
+              >
+                <post-card-minimal
+                  :title="sim.title"
+                  :coverimage="sim.coverimage"
+                  :author="sim.author"
+                  :authorimage="sim.authorphoto"
+                  :date="dateformat(sim.date)"
+                  style="width: 16rem; margin: 12; padding-bottom: 1rem"
+                >
+                </post-card-minimal>
+              </nuxt-link>
+            </div>
+          </div>
+
+          <!-- comments -->
+          <p class="text-lg">Comments</p>
+          <div>
+            <comments
+              v-if="post.post.id"
+              :id="post.post.id"
+              class="mb-10"
+            ></comments>
+          </div>
+        </div>
+      </div>
+    </div>
+  </client-only>
+</template>
+
+<script>
+// import { currentActivities } from '../../store/currentActs'
+import axios from "axios";
+
+import { accountStore } from "../../store/accounts";
+
+// import Quill from 'quill';
+
+// import { QuillEditor } from '@vueup/vue-quill'
+// import '@vueup/vue-quill/dist/vue-quill.snow.css';
+
+import { API_URL } from "../../API";
+
+import StepLoader from "../../components/Wait/StepLoader.vue";
+
+import ImageAuthor from "./../../components/ImageAuthor.vue";
+import Comments from "./../../components/Comment/Comments.vue";
+import PostCardMinimal from "./../../components/PostCardMinimal.vue";
+// import like from './like'
+import bookmark from "./../../components/Actions/bookmark.vue";
+import share from "./../../components/Actions/share";
+
+
+let Quill = {};
+
+// if (!process.env.SERVER) {
+//   console.log('loading quill')
+//   Quill = require('quill')
+// }
+
+if (process.browser) {
+  Quill = require("quill");
+}
+
+// import LoginModal from './LoginModal'
+// import {mapGetters} from 'vuex'
+export default {
+  // setup(){
+  //   const cStore = currentActivities();
+  //     return{
+  //       cStore
+  //     }
+  // },
+  setup() {
+    const userStore = accountStore();
+
+    return {
+      userStore,
+    };
+  },
+
+  // setup(){
+  //   useMeta({
+  //     title:this.post.title,
+  //     htmlAtts:{
+  //       lang:'en'
+  //     }
+  //   })
+  // },
+  // metaInfo:{
+  //   title:this.post.title
+  // },
+  //  setup() {
+  //   const siteData = reactive({
+  //     title:this.post.title,
+  //     description: `My beautiful website`,
+  //   })
+
+  //   useHead({
+  //     // Can be static or computed
+  //     title: computed(() => siteData.title),
+  //     meta: [
+  //       {
+  //         name: `description`,
+  //         content: computed(() => siteData.description),
+  //       },
+  //     ],
+  //   })
+  // },
+
+  components: {
+    StepLoader,
+    ImageAuthor,
+    Comments,
+    // PostCard,
+    // like,
+    bookmark,
+    share,
+    PostCardMinimal
+},
+
+  data() {
+    return {
+      post: {},
+      //   similar:[
+      //       // {'title':'Hello','coverimage':'https://www.gstatic.com/webp/gallery/2.jpg','author':'C Lalhmangaiha','authorimage':'https://st3.depositphotos.com/1010683/19125/i/600/depositphotos_191251860-stock-photo-young-asian-woman-smiling.jpg','date':'12 Dec 2021'},
+      //       {'title':'Hello world','author':'C Lalhmangaiha','date':'12 Dec 2021'},
+      //       {'title':'Hello this is a hello','author':'C Lalhmangaiha','date':'12 Dec 2021'},
+      //       {'title':'Hello, it is','author':'C Lalhmangaiha','date':'12 Dec 2021'},
+
+      //  ]
+      loading: true,
+      similar: {},
+      bk: null,
+      modalalert: false,
+      q: "",
+      showModal: false,
+    };
+  },
+  // async fetch() {
+  //   this.post = await fetch(
+  //     API_URL + '/api/posts/' + this.$route.params.slug
+  //   ).then((res) => res.json())
+  //   // console.log(this.post);
+  //   // await this.cStore.fetchComments(this.post.post.id)
+  // },
+  methods: {
+    dateformat(date) {
+      return this.$moment(date).format("D MMM YYYY");
+    },
+
+    deletePost() {
+      this.userStore.deletePost(this.post.post.id);
+      // $modal.hide('delete-modal')
+      this.$router.push("/");
+    },
+    moveToDrafts() {
+      this.userStore.moveToDrafts(this.post.post.id);
+      // $modal.hide('delete-modal')
+      this.$router.push("/");
+    },
+  },
+  mounted() {
+    // const editor = document.getElementById('#editor');
+    const editorId = "#editor";
+    setTimeout(() => {
+      this.q = new Quill(editorId, {
+        theme: "bubble",
+      });
+      const contents = JSON.parse(this.post.post.content);
+      this.q.setContents(contents, "api");
+    }, 1000);
+  },
+  async created() {
+    await axios
+      .get(API_URL + "/api/posts/" + this.$route.params.slug)
+      .then((res) => {
+        this.post = res.data;
+        this.loading = false;
+      });
+  },
+
+  // async created() {
+  //   await this.axios
+  //     .get('/api/posts/' + this.$route.params.slug)
+  //     .then((response) => {
+  //       this.post = response.data['post']
+
+  //       this.similar = response.data['related']
+  //       this.bk = response.data['bk']
+  //       this.loading = false
+  //     })
+  //     .catch((error) => {
+  //       console.log(error)
+  //     })
+  //   window.scrollTo(0, 0)
+
+  //   if (this.logged == true && this.post.author == this.getusername) {
+  //     this.loggedin = true
+  //     this.isauthor = true
+  //     this.username = this.getusername
+  //     // console.log("INSIDE DETASIL USERNAME",this.username);
+  //   } else if (this.post.author != this.getusername && this.logged == false) {
+  //     this.loggedin = false
+  //     this.isauthor = false
+  //   }
+  // },
+  // methods: {
+
+  //   loginalert() {
+  //     this.modalalert = true
+  //   },
+
+  //   update(slug) {
+  //     this.axios
+  //       .get('/api/posts/' + slug)
+  //       .then((response) => {
+  //         // console.log("THERE ARE VALUES:",response.data)
+
+  //         this.post = response.data['post']
+
+  //         this.similar = response.data['related']
+  //         this.bk = response.data['bk']
+  //         this.loading = false
+  //         window.scrollTo(0, 0)
+  //       })
+  //       .catch((error) => {
+  //         console.log(error)
+  //       })
+  //   },
+  // },
+  computed: {
+    isAuthor() {
+      if (this.post.post.author === this.userStore.getUserName) {
+        return true;
+      } else return false;
+    },
+  },
+
+  // computed: {
+
+  //   getusername() {
+  //     return this.$store.getters.getusername.username
+  //   },
+  //   logged() {
+  //     if (this.$store.getters.loggedIn) {
+  //       return true
+  //     } else {
+  //       return false
+  //     }
+  //   },
+  // },
+};
+</script>
+
+<!-- /* text-align: left;
+    font-size: 48px;
+    margin-top: 0;
+    font-weight: 600; */ -->
+<style scoped>
+@import url("https://cdn.quilljs.com/1.3.6/quill.bubble.css");
+@import url("https://fonts.googleapis.com/css2?family=Lato&family=Noto+Sans+JP&family=Open+Sans&family=Roboto:wght@300;900&family=Scheherazade+New:wght@400;700&display=swap");
+.title {
+  font-family: "Scheherazade New", serif;
+}
+</style>
