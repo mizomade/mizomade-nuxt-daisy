@@ -8,7 +8,7 @@
     <div v-else class="container lg:container mx-auto">
       <div class="md:mx-auto lg:mx-40 xl:mx-40">
         <!-- edit delete draft -->
-        <span class="flex flex-row lg:my-2 mt-20 " >
+        <span class="flex flex-row lg:my-2 mt-20 "  v-if="isAuthor">
 
         <!-- DELETE MODAL -->
           <!-- The button to open modal -->
@@ -311,6 +311,17 @@ export default {
       showModal: false,
     };
   },
+  //  head: {
+  //   title: this.post.post.title,
+  //   meta: [
+  //     {
+  //       hid: this.post.post.title + this.post.post.category + this.post.post.tags,
+  //       name: this.post.post.title,
+  //       content: this.post.post.category
+  //     }
+  //   ],                                                                                                               
+  // },
+
   // async fetch() {
   //   this.post = await fetch(
   //     API_URL + '/api/posts/' + this.$route.params.slug

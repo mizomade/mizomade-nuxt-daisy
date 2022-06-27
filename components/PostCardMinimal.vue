@@ -9,7 +9,7 @@
       <div class="flex flex-row items-center">
         <div class="avatar">
   <div class="w-8 rounded-full">
-    <img :src="authorphoto(authorimage)" /> 
+    <img :src="authorphoto(authorimage)" :alt="author"/> 
    
   </div>
 </div>

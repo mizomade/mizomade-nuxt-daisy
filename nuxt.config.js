@@ -1,14 +1,14 @@
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: 'mizomade-nuxt',
+    title: 'mizomade',
     htmlAttrs: {
       lang: 'en'
     },
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: '' },
+      { hid: 'Mizo te tan a thiamna hrang hrang in hlanchhawnna hmun.', name: 'MizoMade.com', content: '' },
       { name: 'format-detection', content: 'telephone=no' }
     ],
     link: [
