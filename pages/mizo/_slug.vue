@@ -122,7 +122,7 @@
         >
           <!-- <like v-if="post.id" :id="post.id"></like> -->
 
-          <share></share>
+          <share :slug='"https://mizomade.com/mizo/"+post.post.slug'></share>
         </p>
 
         <!-- ////////////////////////////////////////////// -->
@@ -133,6 +133,7 @@
 
         <div class="mx-2 my-1 text-left">
           <!-- Category -->
+          Catefory:
           <div
             v-if="post.post.category"
             class="inline-flex items-center bg-white leading-none text-pink-600 rounded-full p-0 shadow text-teal text-sm"
@@ -144,7 +145,7 @@
               }"
             >
               <span
-                class="inline-flex bg-pink-600 text-white rounded-full h-6 px-3 p-4 justify-center items-center"
+                class="inline-flex bg-purple-800 text-white rounded-full h-6 px-3 p-4 justify-center items-center"
                 >{{ post.post.category }}</span
               >
             </nuxt-link>
