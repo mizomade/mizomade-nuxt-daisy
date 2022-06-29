@@ -1,6 +1,6 @@
-const  API_URL = "http://192.168.43.242:8000";
+// const  API_URL = "http://192.168.43.242:8000";
 // const  API_URL = "http://localhost:8000";
-// const  API_URL = "https://mizomade.pythonanywhere.com";
+const  API_URL = "https://mizomade.pythonanywhere.com";
 
 
 
