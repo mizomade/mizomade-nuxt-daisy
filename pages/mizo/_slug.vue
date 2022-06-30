@@ -179,7 +179,7 @@
             <span v-for="tag in post.post.tags" :key="tag.id">
               <nuxt-link :to="{ name: 'tags-tag', params: { tag: tag } }">
                 <span
-                  class="text-xs font-light py-2 px-2 bg-gray-100 text-gray-600 rounded"
+                  class="text-xs font-light py-2 px-2 bg-gray-100 text-gray-600 rounded my-1"
                   >#{{ tag }}</span
                 >
               </nuxt-link>
