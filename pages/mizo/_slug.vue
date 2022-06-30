@@ -152,7 +152,7 @@
 
         <!-- body -->
 
-        <div id="editor"></div>
+        <div id="editor" class="font-medium overflow-hidden"></div>
 
         <div class="mx-2 my-1 text-left">
           <!-- Category -->
@@ -175,7 +175,7 @@
           </div>
           <br />
           <!-- TAGS -->
-          <div class="space-x-2 my-4">
+          <div class="space-x-2 my-4 flex flex-row flex-wrap">
             <span v-for="tag in post.post.tags" :key="tag.id">
               <nuxt-link :to="{ name: 'tags-tag', params: { tag: tag } }">
                 <span
@@ -390,6 +390,7 @@ export default {
       });
       const contents = JSON.parse(this.post.post.content);
       this.q.setContents(contents, "api");
+      this.q.enable(false);  
     }, 1000);
   },
   async created() {
