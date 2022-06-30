@@ -19,7 +19,7 @@ export default{
     props:['username','firstname','lastname','authorimage'],
     data(){
         return{
-            profilephoto :MEDIA_S3  +this.authorimage
+            profilephoto :MEDIA_S3 +'static/' +this.authorimage
         }
     }
 }

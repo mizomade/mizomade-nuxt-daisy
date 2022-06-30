@@ -8,9 +8,8 @@
     <div v-else class="container lg:container mx-auto">
       <div class="md:mx-auto lg:mx-40 xl:mx-40">
         <!-- edit delete draft -->
-        <span class="flex flex-row lg:my-2 mt-20 "  v-if="isAuthor">
-
-        <!-- DELETE MODAL -->
+        <span class="flex flex-row lg:my-2 mt-20" v-if="isAuthor">
+          <!-- DELETE MODAL -->
           <!-- The button to open modal -->
           <label for="my-modal-delete" class="btn btn-sm btn-ghost modal-button"
             >Delete</label
@@ -34,20 +33,19 @@
             </div>
           </div>
 
-           <div class="mx-1 "></div>
+          <div class="mx-1"></div>
           <!-- eof -->
 
           <nuxt-link
             :to="{ name: 'post-Edit-id', params: { id: post.post.id } }"
           >
-            <p class="btn btn-sm btn-primary ">Edit</p></nuxt-link
+            <p class="btn btn-sm btn-primary">Edit</p></nuxt-link
           >
-           <div class="mx-1"></div>
-
+          <div class="mx-1"></div>
 
           <!-- DRAFT MODAL -->
 
-          <label for="my-modal-draft" class="btn btn-sm  rounded-lg modal-button"
+          <label for="my-modal-draft" class="btn btn-sm rounded-lg modal-button"
             >Unpublish</label
           >
 
@@ -95,11 +93,36 @@
             </nuxt-link>
 
             <!-- <span v-if="this.$store.getters.loggedIn"> -->
-            <bookmark
-              class="mr-3"
-              v-if="post.post.id"
-              :id="post.post.id"
-            ></bookmark>
+            <span>
+              <div v-if="userStore.isLoggedIn">
+                <bookmark
+                  class="mr-3"
+                  v-if="post.post.id"
+                  :id="post.post.id"
+                ></bookmark>
+              </div>
+
+              <div v-else>
+                <button @click="needLogin">
+                  <svg
+                    :class="active ? ' h-6 w-6' : 'h-6 w-6'"
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-6 w-6"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="{2}"
+                      d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z"
+                    />
+                  </svg>
+                </button>
+              </div>
+            </span>
+
             <!-- </span> -->
             <!-- <span v-else>
     <bookmark class="mr-3 opacity-50 disabled" v-if="post.id" @click="loginalert"></bookmark>
@@ -122,7 +145,7 @@
         >
           <!-- <like v-if="post.id" :id="post.id"></like> -->
 
-          <share :slug='"https://mizomade.com/mizo/"+post.post.slug'></share>
+          <share :slug="'https://mizomade.com/mizo/' + post.post.slug"></share>
         </p>
 
         <!-- ////////////////////////////////////////////// -->
@@ -133,7 +156,7 @@
 
         <div class="mx-2 my-1 text-left">
           <!-- Category -->
-          Catefory:
+          Category:
           <div
             v-if="post.post.category"
             class="inline-flex items-center bg-white leading-none text-pink-600 rounded-full p-0 shadow text-teal text-sm"
@@ -225,7 +248,6 @@ import PostCardMinimal from "./../../components/PostCardMinimal.vue";
 import bookmark from "./../../components/Actions/bookmark.vue";
 import share from "./../../components/Actions/share";
 
-
 let Quill = {};
 
 // if (!process.env.SERVER) {
@@ -291,8 +313,8 @@ export default {
     // like,
     bookmark,
     share,
-    PostCardMinimal
-},
+    PostCardMinimal,
+  },
 
   data() {
     return {
@@ -320,7 +342,7 @@ export default {
   //       name: this.post.post.title,
   //       content: this.post.post.category
   //     }
-  //   ],                                                                                                               
+  //   ],
   // },
 
   // async fetch() {
@@ -344,6 +366,19 @@ export default {
       this.userStore.moveToDrafts(this.post.post.id);
       // $modal.hide('delete-modal')
       this.$router.push("/");
+    },
+    needLogin() {
+      this.$toast.show("Login required", {
+        position: "bottom-center",
+        duration: "3000",
+        fitToScreen: true,
+        action: {
+          text: "Login",
+          onClick: (e) => {
+            this.$router.push("/accounts/login");
+          },
+        },
+      });
     },
   },
   mounted() {

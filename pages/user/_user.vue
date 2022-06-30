@@ -76,12 +76,12 @@
               <nuxt-link
                 :to="{ name: 'mizo-slug', params: { slug: post.slug } }"
               >
-                <post-card-small
+                <post-card-small-minimal
                   :title="post.title"
                   :coverimage="post.coverimage"
                   :date="post.date"
                 >
-                </post-card-small
+                </post-card-small-minimal
               ></nuxt-link>
             </div>
           </div>
@@ -93,11 +93,11 @@
 
 <script>
 import { API_URL } from "../../API";
-// import PostCardSmall from "./../components/PostCardSmall.vue";
+import PostCardSmallMinimal from "../../components/PostCardSmallMinimal.vue";
 import Spinner from "./../../components/Spinner.vue";
 export default {
   components: {
-    //  PostCardSmall
+     PostCardSmallMinimal,
     Spinner,
   },
 

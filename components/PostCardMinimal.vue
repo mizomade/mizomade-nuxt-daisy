@@ -14,9 +14,9 @@
   </div>
 </div>
 
-<div class="ml-4 flex flex-col">
+<div class="ml-4 flex flex-col font-semibold text-slate-600">
  <p class=" text-sm break-all">{{author}}</p>
-              <p class="text-xs">{{dateformat(date)}}</p>
+              <p class="text-xs font-medium">{{dateformat(date)}}</p>
 
 </div>
 

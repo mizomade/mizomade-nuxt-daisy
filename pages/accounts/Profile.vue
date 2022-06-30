@@ -12,7 +12,6 @@
         :src="store.userInfos.coverphoto"
         class="w-full h-64 lg:h-80 object-cover"
         alt="Cover Photo"
-        @load="coverloading"
       />
 
       <div
@@ -66,12 +65,12 @@
             >
           </div>
 
-          <div class="tabs">
+          <!-- <div class="tabs">
             <a class="tab tab-lifted">Tab 1</a>
             <a class="tab tab-lifted tab-active">Tab 2</a>
             <a class="tab tab-lifted">Tab 3</a>
-          </div>
-          <!-- <div class="mx-9 mt-12 text-left">
+          </div> -->
+          <div class="mx-9 mt-12 text-left">
             <h2 class="my-2 font-semibold">
               Posts
               <span class="bg-gray-300 p-2 rounded-md text-white">{{
@@ -79,7 +78,7 @@
               }}</span>
             </h2>
             <hr />
-          </div> -->
+          </div>
 
           <!-- posts -->
           <div class="flex flex-wrap flex-row justify-center">
@@ -87,12 +86,12 @@
               <nuxt-link
                 :to="{ name: 'mizo-slug', params: { slug: post.slug } }"
               >
-                <post-card-small
+                <post-card-small-minimal
                   :title="post.title"
                   :coverimage="post.coverimage"
                   :date="post.date"
                 >
-                </post-card-small
+                </post-card-small-minimal
               ></nuxt-link>
             </div>
           </div>
@@ -123,59 +122,13 @@ export default {
   data() {
     return {
       loading: false,
-      // userprofile:false,
-
-      // author: {
-      //   name: "Hmangaiha Pachuau",
-      //   desc:
-      //     "Child of God,I am a child of God.And I am no longer a slave of fear",
-      //   passion: "Live the moment, think real",
-      // },
-      // posts: [],
-      // user: [],
-      // usermedia: [],
+   
     };
   },
-  // async fetch(){
-  // this.user = await fetch(API_URL +'/api/user/profile/'+this.store.getUserName).then(res=>res.json())
-  // this.usermedia = this.user[1]
-  // this.posts = this.user[2]
-  // this.user = this.user[0]
-  // },
+ 
   mounted() {
     window.scrollTo(0, 0);
-    //  axios.get(API_URL+'/api/user/profile/'+this.store.getUserName,{
-    //   headers:{
-
-    //   }
-    //  })
-    // this.$axios
-    //   .$get("/user/profile/" + this.$route.params.username)
-    //   .then((response) => {
-    //     this.user = response.data[0];
-    //     this.usermedia = response.data[1];
-    //     this.posts = response.data[2];
-    //     if(this.user.username === this.$store.getters.getusername.username){
-    //       this.userprofile = true
-    //     }
-    //     else{
-    //       this.userprofile =false
-    //     }
-    //     // setTimeout(()=> this.loading = false,1000)
-    //     // this.loading=true;
-    //     // console.log("USER", this.user);
-    //     // console.log("USER", this.usermedia);
-    //     // console.log("USER", this.posts);
-
-    //   })
-    //   .catch(() => {
-    //     // console.log(error);
-    //     // this.user = response.data[0];
-    //     this.usermedia.coverphoto = require('./../../assets/decoration/before.svg')
-    //     this.usermedia.profilephoto = require('./../../assets/decoration/avatar1.png')
-    //     this.loading=false;
-    //     this.userprofile = false;
-    //   });
+ 
   },
 };
 </script>

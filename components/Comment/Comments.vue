@@ -22,7 +22,7 @@
       <!-- names and content -->
       <div class="lg:mx-4 px-4 mx-4 w-4/5 flex flex-col flex-wrap bg-gray-100 rounded-md">
           <p class="font-medium py-b-4 text-md text-gray-800">{{comment.user}}
-            <span class="font-extralight text-xs"> , {{comment.date}}</span></p>
+            <span class="font-extralight text-xs"> , {{dateformat(comment.date)}}</span></p>
 <p class="pt-2 text-sm">{{comment.comment}}</p>
           <p class="text-xs font-medium py-2 text-indigo-600">
             <!-- <span class="px-2"><span class="font-semibold">23</span> Like </span>  -->
@@ -85,16 +85,7 @@ data(){
 
 async created(){
   await this.commentStore.fetchComments(this.id)
-    // console.log(this.username)
-    // this.axios.get('/api/posts/commentlist/'+this.id).then((response)=>{
-    //   this.comments = response.data;
-    //   this.username = this.$store.getters.getusername.username;
-    //   // console.log("INSIDE COMMENT",this.username);
-    //   // console.log(response.data)
-    // }).catch((error)=>{
-    //   console.log(error);
-      
-    // })
+
 
 },
 methods:{
@@ -108,7 +99,10 @@ methods:{
       console.log(error);
       
     })
-  }
+  },
+   dateformat(date) {
+      return this.$moment(date).format('D MMM YYYY')
+    },
 
 },
 computed:{

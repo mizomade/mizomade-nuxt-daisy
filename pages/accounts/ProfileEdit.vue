@@ -161,6 +161,7 @@
           @click="update"
           class="bg-indigo-800 hover:bg-indigo-600 rounded-lg w-full text-white font-bold px-4 py-2"
         >
+        
           Save
         </button>
       </div>
@@ -212,6 +213,10 @@ export default {
 
   methods: {
      update() {
+        this.$root.$toast.show("Updating Profile..",{
+            duration: 3000,
+            position: 'bottom-center',
+          });
        this.usernamevalidation();
        setTimeout(()=>{
         if(this.username_error == false){
@@ -253,7 +258,12 @@ export default {
       
     },
     usernamevalidation() {
-      axios
+      if(this.user.username == this.store.getUserName){
+            this.username_error = false;
+
+      }
+      else{
+  axios
         .get(API_URL + `/api/user/profile/usernamevalidation/` + this.user.username)
         .then((response) => {
           console.log(response.data[0]);
@@ -272,6 +282,8 @@ export default {
         .catch((error) => {
           console.log(error);
         });
+      }
+    
     },
 
     updateprofilephoto(event) {

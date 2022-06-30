@@ -1,63 +1,5 @@
 <template>
   <div class="container z-10">
-    <!--nav class="bg-white shadow-lg">
-			<div class="max-w-6xl mx-auto px-4">
-				<div class="flex justify-between">
-					<div class="flex space-x-7">
-						<div>
-							<a href="#" class="flex items-center py-4 px-2">
-								<img src="logo.png" alt="Logo" class="h-8 w-8 mr-2">
-								<span class="font-semibold text-gray-900 text-lg">MizoMade.com</span>
-							</a>
-						</div>
-						<div class="hidden md:flex items-center space-x-1">
-							<a href="" class="py-4 px-2 text-green-500 border-b-4 border-green-500 font-semibold ">Home</a>
-							<a href="" class="py-4 px-2 text-gray-500 font-semibold hover:text-green-500 transition duration-300">Services</a>
-							<a href="" class="py-4 px-2 text-gray-500 font-semibold hover:text-green-500 transition duration-300">About</a>
-							<a href="" class="py-4 px-2 text-gray-500 font-semibold hover:text-green-500 transition duration-300">Contact Us</a>
-						</div>
-					</div>
-					<div class="hidden md:flex items-center space-x-3 ">
-						<a href="" class="py-2 px-2 font-medium text-gray-500 rounded hover:bg-green-500 hover:text-white transition duration-300">Log In</a>
-						<a href="" class="py-2 px-2 font-medium text-white bg-green-500 rounded hover:bg-green-400 transition duration-300">Sign Up</a>
-					</div>
-					<div class="md:hidden flex items-center">
-						<button class="outline-none mobile-menu-button">
-						<svg class=" w-6 h-6 text-gray-500 hover:text-green-500 "
-							x-show="!showMenu"
-							fill="none"
-							stroke-linecap="round"
-							stroke-linejoin="round"
-							stroke-width="2"
-							viewBox="0 0 24 24"
-							stroke="currentColor"
-						>
-							<path d="M4 6h16M4 12h16M4 18h16"></path>
-						</svg>
-					</button>
-					</div>
-				</div>
-			</div>
-
-
-			<div class="hidden mobile-menu">
-				<ul class="">
-					<li class="active"><a href="index.html" class="block text-sm px-2 py-4 text-white bg-green-500 font-semibold">Home</a></li>
-					<li><a href="#services" class="block text-sm px-2 py-4 hover:bg-green-500 transition duration-300">Services</a></li>
-					<li><a href="#about" class="block text-sm px-2 py-4 hover:bg-green-500 transition duration-300">About</a></li>
-					<li><a href="#contact" class="block text-sm px-2 py-4 hover:bg-green-500 transition duration-300">Contact Us</a></li>
-				</ul>
-			</div>
-			<script>
-				const btn = document.querySelector("button.mobile-menu-button");
-				const menu = document.querySelector(".mobile-menu");
-
-				btn.addEventListener("click", () => {
-					menu.classList.toggle("hidden");
-				});
-			</script>
-		</nav -->
-
     <!-- sidebar -->
     <transition name="side">
       <div
@@ -73,7 +15,6 @@
             />
             <h2 class="font-semibold text-xl text-center">MizoMade.com</h2>
           </span>
-          <!-- <h2 class="font-semibold text-xl text-center my-2 py-6"> -->
 
           <hr class="border-1 border-grey-100 mb-8" />
           <ul
@@ -109,7 +50,6 @@
               height="20"
               viewBox="0 0 12 12"
             >
-              <!-- <path  d="M24 20.188l-8.315-8.209 8.2-8.282-3.697-3.697-8.212 8.318-8.31-8.203-3.666 3.666 8.321 8.24-8.206 8.313 3.666 3.666 8.237-8.318 8.285 8.203z"/> -->
               <line
                 x1="1"
                 y1="11"
@@ -135,15 +75,11 @@
           @click="sideon = false"
         ></div>
       </div>
-      <!-- <div v-else>
-<div class="w-1/3 bg-purple-100 bg-opacity-40 border-b border-gray-200 h-full backdrop-filter backdrop-blur-sm" >
-</div>
-    </div> -->
     </transition>
     <!-- --------------------- -->
 
     <!-- navbar -->
-    <nav class="fixed top-0 z-10 bg-white shadow-md w-full">
+    <nav class="fixed top-0 z-10 bg-white shadow-sm w-full">
       <div class="max-w-6xl mx-auto px-4">
         <div class="flex justify-between">
           <div class="md:hidden flex items-center">
@@ -199,35 +135,14 @@
               </router-link>
               <!-- eof -->
               <!-- for desktop -->
-              <!-- <svg
-                fill="none"
-                stroke="currentColor"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                viewBox="0 0 24 24"
-                class="w-6 h-6 hidden lg:block bg-red-600"
-              >
-                <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
-              </svg> -->
-              <!-- <div class="form-control "> -->
-    <input type="text" placeholder="Search…" v-model="query" @keyup.enter="search" class="border rounded-md pl-4 w-44 h-10 hidden md:flex " />
-      <!-- <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg> -->
 
-              <!-- <button
-                v-if="store.isLoggedIn"
-                class="bg-gray-100 md:hidden text-gray-800 px-2 py-1 rounded-md"
-              >
-                Create
-              </button> -->
-
-              <!-- <nuxt-link v-else :to="{ path: 'accounts/login' }">
-                <button
-                  class="bg-green-400 md:hidden text-white px-2 py-1 rounded-md"
-                >
-                  Login
-                </button>
-              </nuxt-link> -->
+              <input
+                type="text"
+                placeholder="Search…"
+                v-model="query"
+                @keyup.enter="search"
+                class="border rounded-md pl-4 w-44 h-10 hidden md:flex"
+              />
             </div>
 
             <!-- ...... -->
@@ -252,46 +167,8 @@
                   {{ categories.name }}
                 </nuxt-link>
               </span>
-              <!-- <a
-                href=""
-                class="py-4 px-2 text-green-500 border-b-4 border-green-500 font-semibold"
-                >Home</a
-              > -->
-
-              <!-- <a
-                href=""
-                class="py-4 px-2 text-gray-500 font-semibold hover:text-green-500 transition duration-300"
-                >Services</a
-              >
-              <a
-                href=""
-                class="py-4 px-2 text-gray-500 font-semibold hover:text-green-500 transition duration-300"
-                >About</a
-              >
-              <a
-                href=""
-                class="py-4 px-2 text-gray-500 font-semibold hover:text-green-500 transition duration-300"
-                >Contact Us</a
-              > -->
-              <!-- 
-              <button
-                v-if="store.isLoggedIn"
-                class="bg-gray-100 md:hidden text-gray-800 px-2 py-1 rounded-md"
-              >
-                Create
-              </button> -->
-
-              <!-- <nuxt-link v-if="!store.isLoggedIn" :to="{ path: 'accounts/login' }">
-                <button class="bg-green-400 text-white px-2 py-1 rounded-md">
-                  Login
-                </button>
-              </nuxt-link> -->
             </div>
           </div>
-          <!-- <div class="hidden md:flex items-center space-x-3 ">
-						<a href="" class="py-2 px-2 font-medium text-gray-500 rounded hover:bg-green-500 hover:text-white transition duration-300">Log In</a>
-						<a href="" class="py-2 px-2 font-medium text-white bg-green-500 rounded hover:bg-green-400 transition duration-300">Sign Up</a>
-					</div> -->
 
           <div class="flex items-center space-x-2 ml-3">
             <div
@@ -313,8 +190,8 @@
                   srcset=""
                   width="100"
                   height="100"
-                  class="rounded-full object-cover min-w-10 w-8  h-8 cursor-pointer"
-                  style="min-width:2rem"
+                  class="rounded-full object-cover min-w-10 w-8 h-8 cursor-pointer"
+                  style="min-width: 2rem"
                 />
 
                 <!-- <label tabindex="0" class="btn m-1">Click</label> -->
@@ -374,7 +251,8 @@
                           stroke-linecap="round"
                           stroke-linejoin="round"
                           d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z"
-                        /></svg>Dashboard
+                        /></svg
+                      >Dashboard
                     </nuxt-link>
                   </li>
                   <li>
@@ -437,15 +315,6 @@
           </div>
         </div>
       </div>
-
-      <!-- <div class="hidden mobile-menu">
-				<ul class="">
-					<li class="active"><a href="index.html" class="block text-sm px-2 py-4 text-white bg-green-500 font-semibold">Home</a></li>
-					<li><a href="#services" class="block text-sm px-2 py-4 hover:bg-green-500 transition duration-300">Services</a></li>
-					<li><a href="#about" class="block text-sm px-2 py-4 hover:bg-green-500 transition duration-300">About</a></li>
-					<li><a href="#contact" class="block text-sm px-2 py-4 hover:bg-green-500 transition duration-300">Contact Us</a></li>
-				</ul>
-			</div> -->
     </nav>
   </div>
 </template>
@@ -464,18 +333,20 @@ export default {
   },
   data() {
     return {
-      query:'',
+      query: "",
       open: false,
       active: false,
       sideon: false,
     };
   },
-  methods:{
-    search(){
-      this.$router.push({name:'search-query',params:{'query':this.query}});
-
-    }
-  }
+  methods: {
+    search() {
+      this.$router.push({
+        name: "search-query",
+        params: { query: this.query },
+      });
+    },
+  },
   //   beforeMount(){
   //       window.addEventListener('wheel',this.handlescroll)
   //   },

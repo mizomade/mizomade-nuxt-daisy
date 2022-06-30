@@ -64,14 +64,14 @@
 
 <div class="flex flex-col   m-2">
     <p class="text-gray-400 font-bold  text-md uppercase">
-        Contact Us</p>
+        Contact</p>
     <ul>
         <li class="text-gray-400 font-light text-sm"> mizomade.official@gmail.com</li>
-        <li class="text-gray-400 font-light text-sm"> 6009229392</li>
+        <li class="text-gray-400 font-light text-sm"> +91 6009229392</li>
 
     </ul>
     <span class="text-gray-200 py-2 px-3 my-2 text-center font-semibold bg-blue-900">
-        <nuxt-link to="/info/contactus"> Write us a feedback</nuxt-link> </span>
+        <nuxt-link to="/info/contactus"> Contact us</nuxt-link> </span>
 </div>
       </div>
 
