@@ -25,14 +25,14 @@
           for="email"
           class="mb-3 block text-base font-medium text-[#07074D]"
         >
-          Email Address
+          Email or Phone Number
         </label>
         <input
         v-model="email"
           type="email"
           name="email"
           id="email"
-          placeholder="example@domain.com"
+          placeholder="email or phone number"
           class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
         />
       </div>
@@ -115,7 +115,15 @@ this.$toast.success('Thank you for your response!', {
             position: 'top-center',
             duration: '2000',
             fitToScreen: true,
-          })      })
+          });
+          this.name = '';
+          this.email ='';
+          this.subject='';
+          this.message = '';
+    window.scrollTo(0, 0);
+
+          
+          })
     }
   }
 
