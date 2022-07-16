@@ -153,6 +153,11 @@ if (process.browser) {
 
 export default {
   name: "App",
+   head(){
+    return{
+      title: "Edit Post" 
+    }
+  },
   components: {
     // editor,
   },

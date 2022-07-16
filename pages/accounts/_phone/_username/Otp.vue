@@ -51,6 +51,11 @@ import { accountStore } from '~/store/accounts';
 
 export default {
   layout:'accounts',
+   head(){
+    return{
+      title: "OTP Registration"
+    }
+  },
   components: {
     // LockClosedIcon,
   },

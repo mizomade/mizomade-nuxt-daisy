@@ -40,6 +40,11 @@ export default {
   name:'categoryPage',
   layout:'default',
   components: { PostCardMinimal,CardSkeleton },
+  head(){
+    return{
+      title: this.$route.params.category
+    }
+  },
   data() {
     return {
       loading:true,

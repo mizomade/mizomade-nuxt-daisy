@@ -161,6 +161,11 @@ import { accountStore } from '~/store/accounts';
 
 export default {
   layout:'accounts',
+   head(){
+    return{
+      title: "Registration"
+    }
+  },
   components: {
     
     // LockClosedIcon,

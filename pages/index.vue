@@ -65,6 +65,11 @@ import pagination from "./../components/pagination.vue";
 export default ({
   name: 'IndexPage',
   layout:'default',
+  head(){
+    return{
+      title:'Mizomade'
+    }
+  },
   setup(){  
         const store = currentActivities();
         // store.fetchPosts();

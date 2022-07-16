@@ -113,6 +113,11 @@ import UserComponent from '../../components/UserComponent.vue'
 export default {
   layout: 'search',
   transition: 'search',
+   head(){
+    return{
+      title: "Search"
+    }
+  },
 
   setup() {
     const searchQuery = ''

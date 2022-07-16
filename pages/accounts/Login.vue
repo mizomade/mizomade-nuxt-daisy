@@ -103,7 +103,6 @@
                 ></path>
               </svg>
             </span>
-            <!-- <LockClosedIcon v-else class="h-5 w-5 text-indigo-500 group-hover:text-indigo-400" aria-hidden="true" /> -->
           </span>
           Sign in
         </button>
@@ -136,6 +135,11 @@ import { accountStore } from '../../store/accounts'
 // axios.defaults.xsrfHeaderName = 'X-CSRFToken';
 export default {
   layout: 'accounts',
+   head(){
+    return{
+      title: "Login"
+    }
+  },
 
   setup() {
     const store = accountStore()

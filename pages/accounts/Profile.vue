@@ -107,6 +107,11 @@ import { accountStore } from "../../store/accounts";
 import Spinner from "./../../components/Spinner.vue";
 export default {
   middleware: "authenticated",
+   head(){
+    return{
+      title: "My Profile"
+    }
+  },
 
   components: {
     //  PostCardSmall

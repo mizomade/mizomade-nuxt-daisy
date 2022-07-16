@@ -176,6 +176,11 @@ import { accountStore } from "~/store/accounts";
 
 export default {
   middleware: "authenticated",
+   head(){
+    return{
+      title: "Profile Edit"
+    }
+  },
   setup() {
     const store = accountStore();
     return { store };

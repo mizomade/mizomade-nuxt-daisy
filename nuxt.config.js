@@ -1,20 +1,20 @@
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
-  head: {
-    title: 'mizomade',
-    htmlAttrs: {
-      lang: 'en'
-    },
-    meta: [
-      { charset: 'utf-8' },
-      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'Mizo te tan a thiamna hrang hrang in hlanchhawnna hmun.', name: 'MizoMade.com', content: '' },
-      { name: 'format-detection', content: 'telephone=no' }
-    ],
-    link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/m.svg' }
-    ]
-  },
+  // head: {
+  //   title: 'mizomade',
+  //   htmlAttrs: {
+  //     lang: 'en'
+  //   },
+  //   meta: [
+  //     { charset: 'utf-8' },
+  //     { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+  //     { hid: 'Mizo te tan a thiamna hrang hrang in hlanchhawnna hmun.', name: 'MizoMade.com', content: '' },
+  //     { name: 'format-detection', content: 'telephone=no' }
+  //   ],
+  //   link: [
+  //     { rel: 'icon', type: 'image/x-icon', href: '/m.svg' }
+  //   ]
+  // },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [

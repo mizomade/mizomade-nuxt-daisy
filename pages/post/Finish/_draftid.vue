@@ -181,6 +181,11 @@ import { accountStore} from '../../../store/accounts'
 export default {
   name: 'finish',
   layout:'editor',
+   head(){
+    return{
+      title: "Finish Post"
+    }
+  },
   components: {
     // editor,
   },

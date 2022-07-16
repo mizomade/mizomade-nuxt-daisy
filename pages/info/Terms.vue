@@ -130,3 +130,14 @@
 
 
 </template>
+
+<script>
+export default{
+     head(){
+    return{
+      title: "Terms and Conditions"
+    }
+  },
+}
+
+</script>

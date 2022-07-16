@@ -60,6 +60,11 @@ if (process.browser) {
 export default {
   name: 'Create',
   layout: 'editor',
+   head(){
+    return{
+      title: "Edit post"
+    }
+  },
   components: {
     // editor,
   },

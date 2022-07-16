@@ -105,7 +105,7 @@
               <div v-else>
                 <button @click="needLogin">
                   <svg
-                    :class="active ? ' h-6 w-6' : 'h-6 w-6'"
+                    class="h-6 w-6"
                     xmlns="http://www.w3.org/2000/svg"
                     className="h-6 w-6"
                     fill="none"
@@ -238,6 +238,7 @@ import { accountStore } from "../../store/accounts";
 // import '@vueup/vue-quill/dist/vue-quill.snow.css';
 
 import { API_URL } from "../../API";
+// import {  useMeta,ref } from '@nuxtjs/composition-api'
 
 import StepLoader from "../../components/Wait/StepLoader.vue";
 
@@ -268,42 +269,53 @@ export default {
   //       cStore
   //     }
   // },
+  head:{},
   setup() {
     const userStore = accountStore();
-
+//  const title = ref('');
+//         useMeta(() => ({ title: "TITLE" }));
     return {
       userStore,
+      // title
     };
   },
 
-  // setup(){
-  //   useMeta({
-  //     title:this.post.title,
-  //     htmlAtts:{
-  //       lang:'en'
-  //     }
-  //   })
-  // },
-  // metaInfo:{
-  //   title:this.post.title
-  // },
-  //  setup() {
-  //   const siteData = reactive({
-  //     title:this.post.title,
-  //     description: `My beautiful website`,
-  //   })
-
-  //   useHead({
-  //     // Can be static or computed
-  //     title: computed(() => siteData.title),
+  //   head() {
+  //   return {
+  //     title: this.post.post.title,
   //     meta: [
   //       {
-  //         name: `description`,
-  //         content: computed(() => siteData.description),
+  //         hid:
+  //           this.post.post.title +
+  //           this.post.post.category +
+  //           this.post.post.tags,
+  //         name: this.post.post.title,
+  //         content: this.post.post.category,
   //       },
   //     ],
-  //   })
+  //   };
+  
   // },
+
+    head() {
+          
+ return {
+      
+      title: this.title,
+      meta: [
+        {
+          hid:"HID",
+          name: "NAME",
+          content: "CONTENT"
+        },
+      ],
+    };
+             
+
+    
+  },
+
+ 
 
   components: {
     StepLoader,
@@ -318,14 +330,12 @@ export default {
 
   data() {
     return {
+      title:'Mizomade',
+      hid:'Mizomade',
+      name:'author',
+      content:'',
+      
       post: {},
-      //   similar:[
-      //       // {'title':'Hello','coverimage':'https://www.gstatic.com/webp/gallery/2.jpg','author':'C Lalhmangaiha','authorimage':'https://st3.depositphotos.com/1010683/19125/i/600/depositphotos_191251860-stock-photo-young-asian-woman-smiling.jpg','date':'12 Dec 2021'},
-      //       {'title':'Hello world','author':'C Lalhmangaiha','date':'12 Dec 2021'},
-      //       {'title':'Hello this is a hello','author':'C Lalhmangaiha','date':'12 Dec 2021'},
-      //       {'title':'Hello, it is','author':'C Lalhmangaiha','date':'12 Dec 2021'},
-
-      //  ]
       loading: true,
       similar: {},
       bk: null,
@@ -334,24 +344,16 @@ export default {
       showModal: false,
     };
   },
-  //  head: {
-  //   title: this.post.post.title,
-  //   meta: [
-  //     {
-  //       hid: this.post.post.title + this.post.post.category + this.post.post.tags,
-  //       name: this.post.post.title,
-  //       content: this.post.post.category
-  //     }
-  //   ],
-  // },
 
   // async fetch() {
   //   this.post = await fetch(
   //     API_URL + '/api/posts/' + this.$route.params.slug
   //   ).then((res) => res.json())
-  //   // console.log(this.post);
-  //   // await this.cStore.fetchComments(this.post.post.id)
+  
   // },
+  
+  
+
   methods: {
     dateformat(date) {
       return this.$moment(date).format("D MMM YYYY");
@@ -390,7 +392,7 @@ export default {
       });
       const contents = JSON.parse(this.post.post.content);
       this.q.setContents(contents, "api");
-      this.q.enable(false);  
+      this.q.enable(false);
     }, 1000);
   },
   async created() {
@@ -398,59 +400,16 @@ export default {
       .get(API_URL + "/api/posts/" + this.$route.params.slug)
       .then((res) => {
         this.post = res.data;
+        //meta
+        this.title=this.post.post.title;
+        this.name = this.post.post.author;
+        // this.hid = this.post.post.title + this.post.post.category + this.post.post.tags;
         this.loading = false;
       });
   },
 
-  // async created() {
-  //   await this.axios
-  //     .get('/api/posts/' + this.$route.params.slug)
-  //     .then((response) => {
-  //       this.post = response.data['post']
-
-  //       this.similar = response.data['related']
-  //       this.bk = response.data['bk']
-  //       this.loading = false
-  //     })
-  //     .catch((error) => {
-  //       console.log(error)
-  //     })
-  //   window.scrollTo(0, 0)
-
-  //   if (this.logged == true && this.post.author == this.getusername) {
-  //     this.loggedin = true
-  //     this.isauthor = true
-  //     this.username = this.getusername
-  //     // console.log("INSIDE DETASIL USERNAME",this.username);
-  //   } else if (this.post.author != this.getusername && this.logged == false) {
-  //     this.loggedin = false
-  //     this.isauthor = false
-  //   }
-  // },
-  // methods: {
-
-  //   loginalert() {
-  //     this.modalalert = true
-  //   },
-
-  //   update(slug) {
-  //     this.axios
-  //       .get('/api/posts/' + slug)
-  //       .then((response) => {
-  //         // console.log("THERE ARE VALUES:",response.data)
-
-  //         this.post = response.data['post']
-
-  //         this.similar = response.data['related']
-  //         this.bk = response.data['bk']
-  //         this.loading = false
-  //         window.scrollTo(0, 0)
-  //       })
-  //       .catch((error) => {
-  //         console.log(error)
-  //       })
-  //   },
-  // },
+  
+ 
   computed: {
     isAuthor() {
       if (this.post.post.author === this.userStore.getUserName) {
@@ -459,19 +418,7 @@ export default {
     },
   },
 
-  // computed: {
-
-  //   getusername() {
-  //     return this.$store.getters.getusername.username
-  //   },
-  //   logged() {
-  //     if (this.$store.getters.loggedIn) {
-  //       return true
-  //     } else {
-  //       return false
-  //     }
-  //   },
-  // },
+  
 };
 </script>
 

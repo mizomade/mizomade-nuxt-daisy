@@ -85,6 +85,11 @@ import axios from 'axios'
 import { API_URL } from './../../API'
 
 export default{
+  head(){
+    return{
+      title: "Contact Us Mizomade"
+    }
+  },
   data(){
     return {
       name:'',

@@ -43,6 +43,11 @@ import CardSkeleton from './../../components/CardSkeleton.vue'
 
 export default {
   components: { PostCardMinimal ,CardSkeleton},
+   head(){
+    return{
+      title: "Saved"
+    }
+  },
   setup(){
       const store = accountStore();
       return {
