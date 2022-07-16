@@ -84,6 +84,7 @@
         <div class="flex justify-between">
           <div class="md:hidden flex items-center">
             <button
+            name="menu"
               class="outline-none mobile-menu-button"
               @click="sideon = !sideon"
             >
@@ -129,6 +130,7 @@
                   stroke-width="2"
                   viewBox="0 0 24 24"
                   class="w-6 h-6 lg:hidden"
+                  name="search"
                 >
                   <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
                 </svg>

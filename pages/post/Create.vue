@@ -4,6 +4,7 @@
     class="flex flex-col items-center mt-10 mb-44  lg:w-4/5 lg:mx-auto lg:max-w-10/12"
   >
     <div class="container mx-2" style="width: 96%">
+    <h2 class="font-bold text-lg">Create Post</h2>
       <!-- <span class="mx-auto  -mb-96">
         <editor v-model="content" :class="'mb-'+content.length"></editor>
       </span>  -->

@@ -1,7 +1,7 @@
 <template>
   <div
     
-    class="flex flex-col justify-center items-start px-4 mt-10 mb-44 lg:w-4/5 mx-auto "
+    class="flex flex-col justify-center items-start px-2 mr-1 mt-10 mb-44 lg:w-4/5 mx-auto "
   >
     <div class="container mx-2" >
       <div class="flex lg:flex-row flex-col md:flex-wrap">
