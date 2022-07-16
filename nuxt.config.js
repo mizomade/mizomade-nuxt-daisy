@@ -25,6 +25,8 @@ export default {
     // '@headlessui/vue',
     // {src: '~/plugins/quill/editor.js',mode:'client'},
     {src: '~/plugins/telephone.js',mode:'client'},
+    {src: '~/plugins/analytics.js',mode:'client'},
+
     // { src: "~/plugins/vue-js-modal", mode: "client" }
 
   ],
