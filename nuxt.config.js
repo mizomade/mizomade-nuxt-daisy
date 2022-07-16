@@ -40,7 +40,8 @@ export default {
     '@nuxtjs/tailwindcss',
     '@nuxtjs/composition-api/module',
     '@pinia/nuxt',
-    '@nuxtjs/dotenv'
+    '@nuxtjs/dotenv',
+
 
   ],
 
@@ -60,6 +61,7 @@ export default {
   router: {
     middleware: ['authenticated']
   },
+ 
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
