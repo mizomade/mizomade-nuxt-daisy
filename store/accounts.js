@@ -63,7 +63,7 @@ import {API_URL} from './../API'
               const form = new FormData();
               form.append('username', username)
               form.append('password',password)
-              console.log("IN STATE USERNAME AND PASSWORD"   + username.toString() + password)
+              // console.log("IN STATE USERNAME AND PASSWORD"   + username.toString() + password)
             axios.post(API_URL+`/dj-rest-auth/login/`,form).then(res => {
                 // console.log(res.data.key)
                 if(process.client) {
@@ -87,13 +87,11 @@ import {API_URL} from './../API'
                     "Authorization": this.key,
                   },
               }).then((response)=>{
-                  console.log(response.data);
+                  // console.log(response.data);
                    this.userMeta =  response.data[0];
             this.userInfos =  response.data[1];
             this.userPosts =  response.data[2];
-              }).catch((err)=>{
-                  console.log(err);
-              })
+              });
 
 
           },
@@ -106,12 +104,10 @@ import {API_URL} from './../API'
                  "Authorization": this.key,
                 },
             }).then((response)=>{
-                console.log(response.data);
+                // console.log(response.data);
                  this.bookmarkedList =  response.data;
       
-            }).catch((err)=>{
-                console.log(err);
-            })
+            });
 
 
         },
