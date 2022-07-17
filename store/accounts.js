@@ -113,7 +113,7 @@ import {API_URL} from './../API'
         },
 
         attemptLogout(){
-            axios.get(API_URL+`/dj-rest-auth/logout/`).then(() => {
+            axios.post(API_URL+`/dj-rest-auth/logout/`).then(() => {
                 this.userPosts=[];
                 this.userMeta= [];
                 this.skey= null;

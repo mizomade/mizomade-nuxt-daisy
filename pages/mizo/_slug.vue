@@ -152,7 +152,7 @@
 
         <!-- body -->
 
-        <div id="editor" class="font-medium overflow-hidden"></div>
+        <div id="editor" class="font-lg overflow-hidden"></div>
 
         <div class="mx-2 my-1 text-left">
           <!-- Category -->
@@ -362,6 +362,7 @@ export default {
     deletePost() {
       this.userStore.deletePost(this.post.post.id);
       // $modal.hide('delete-modal')
+      // this.userStore.fetchUserData
       this.$router.push("/");
     },
     moveToDrafts() {
@@ -426,10 +427,16 @@ export default {
     font-size: 48px;
     margin-top: 0;
     font-weight: 600; */ -->
-<style scoped>
+<style >
 @import url("https://cdn.quilljs.com/1.3.6/quill.bubble.css");
 @import url("https://fonts.googleapis.com/css2?family=Lato&family=Noto+Sans+JP&family=Open+Sans&family=Roboto:wght@300;900&family=Scheherazade+New:wght@400;700&display=swap");
 .title {
   font-family: "Scheherazade New", serif;
 }
+
+#editor > div.ql-editor > p:nth-child(n){
+font-size: 16px;
+}
+
+
 </style>

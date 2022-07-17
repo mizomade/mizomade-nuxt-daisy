@@ -105,7 +105,7 @@ export const currentActivities = defineStore(
                   })
               },
               publishPost(id){
-                axios.get(API_URL+'/api/posts/publisj/'+id).then(()=>{
+                axios.get(API_URL+'/api/posts/publish/'+id).then(()=>{
                   
                   })
               },

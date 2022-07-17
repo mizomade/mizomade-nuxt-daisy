@@ -87,6 +87,7 @@
                 :to="{ name: 'mizo-slug', params: { slug: post.slug } }"
               >
                 <post-card-small-minimal
+                  v-if="post.title"
                   :title="post.title"
                   :coverimage="post.coverimage"
                   :date="post.date"
