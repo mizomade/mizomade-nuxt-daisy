@@ -47,7 +47,6 @@ export default {
     '@nuxtjs/composition-api/module',
     '@pinia/nuxt',
     '@nuxtjs/dotenv',
-    '@vueuse/nuxt',
 
 
 
