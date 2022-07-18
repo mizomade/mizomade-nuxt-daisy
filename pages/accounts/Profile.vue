@@ -7,7 +7,7 @@
   <div v-else class="container bg-gray-100 lg:mt-1  -mt-0 sm:-mt-3 ">
     <!-- {{user[1]}} -->
 
-    <div class="mb-96 text-center mx-auto">
+    <div class="pb-10 text-center mx-auto">
       <img
         :src="store.userInfos.coverphoto"
         class="w-full h-64 lg:h-80 object-cover"
@@ -63,14 +63,13 @@
               class="border rounded bg-transparent border-gray-600 hover:bg-gray-900 hover:text-red-50 w-5/6 px-6 py-2"
               >Edit Profile</router-link
             >
-          </div>
+          </div> 
 
-          <!-- <div class="tabs">
-            <a class="tab tab-lifted">Tab 1</a>
-            <a class="tab tab-lifted tab-active">Tab 2</a>
-            <a class="tab tab-lifted">Tab 3</a>
-          </div> -->
-          <div class="mx-9 mt-12 text-left">
+          <div class="tabs mt-10">
+            <a class="tab tab-lifted font-medium" :class="[ tab1 ? 'tab-active' : ' ']" @click="tabtoggle">Posts</a>
+            <a class="tab tab-lifted font-medium" :class="[ !tab1 ? 'tab-active' : ' ']"  @click="tabtoggle">Drafts</a>
+          </div>
+          <!-- <div class="mx-9 mt-12 text-left">
             <h2 class="my-2 font-semibold">
               Posts
               <span class="bg-gray-300 p-2 rounded-md text-white">{{
@@ -78,16 +77,16 @@
               }}</span>
             </h2>
             <hr />
-          </div>
-
+          </div> -->
+          <!-- <span v-if="tab1"> teSTTTT</span> -->
           <!-- posts -->
-          <div class="flex flex-wrap flex-row justify-center">
+          <div class="flex flex-wrap flex-row justify-center" v-if="tab1" >
             <div v-for="post in store.userPosts" :key="post.id">
               <nuxt-link
                 :to="{ name: 'mizo-slug', params: { slug: post.slug } }"
               >
                 <post-card-small-minimal
-                  v-if="post.title"
+                  v-if="post.published"
                   :title="post.title"
                   :coverimage="post.coverimage"
                   :date="post.date"
@@ -95,7 +94,43 @@
                 </post-card-small-minimal
               ></nuxt-link>
             </div>
+            <span v-if="store.userPosts" class="my-8 font-bold"> No Posts Yet!</span>
           </div>
+          <!-- Drafts -->
+           <div class="flex flex-wrap flex-col justify-center space-y-3" v-else >
+            <div v-for="post in store.userPosts" :key="post.id">
+              <!-- <nuxt-link
+                :to="{ name: 'mizo-slug', params: { slug: post.slug } }"
+              > -->
+                
+                <!-- <post-card-small-minimal
+                  v-if="!post.published"
+                  :title="post.title"
+                  :coverimage="post.coverimage"
+                  :date="post.date"
+                > -->
+                <!-- <div v-if="!post.published" class="flex flex-row ">
+                <span v-if="post.title">{{post.title}} </span>
+                <span v-else> No Title</span> -->
+               
+                    <draftcard v-if="!post.published" 
+                :title="post.title"
+                  :coverimage="post.coverimage"
+                  :date="post.date"
+                  :id="post.id"
+                  :store="store"
+                  >
+
+                </draftcard>
+
+                </div>
+            
+
+                <!-- </post-card-small-minimal> -->
+                <!-- </nuxt-link> -->
+            <!-- </div> -->
+          </div>
+
         </div>
       </div>
     </div>
@@ -106,6 +141,7 @@
 import { accountStore } from "../../store/accounts";
 // import PostCardSmall from "./../components/PostCardSmall.vue";
 import Spinner from "./../../components/Spinner.vue";
+import draftcard from './../../components/draftcard.vue'
 export default {
   middleware: "authenticated",
    head(){
@@ -117,6 +153,7 @@ export default {
   components: {
     //  PostCardSmall
     Spinner,
+    draftcard,
   },
   setup() {
     const store = accountStore();
@@ -128,6 +165,7 @@ export default {
   data() {
     return {
       loading: false,
+      tab1:true,
    
     };
   },
@@ -136,5 +174,10 @@ export default {
     window.scrollTo(0, 0);
  
   },
+  methods:{
+    tabtoggle(){
+      this.tab1 = !this.tab1;
+    }
+  }
 };
 </script>

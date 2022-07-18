@@ -22,7 +22,7 @@ import {API_URL} from './../API'
     state: () => {
         return {
           // all these properties will have their type inferred automatically
-          userMeta:[],
+          userMeta:process.client ? localStorage.getItem('skey') : [],
           userInfos:[],
           userPosts:[],
           skey: process.client ? localStorage.getItem('skey') : null,
@@ -88,6 +88,13 @@ import {API_URL} from './../API'
                   },
               }).then((response)=>{
                   // console.log(response.data);
+                  if(process.client) {
+                    localStorage.setItem("userMeta", JSON.stringify(response.data[0]));
+                    localStorage.setItem("userInfos", JSON.stringify(response.data[1]));
+                    localStorage.setItem("userPosts", JSON.stringify(response.data[2]));
+
+
+                  }
                    this.userMeta =  response.data[0];
             this.userInfos =  response.data[1];
             this.userPosts =  response.data[2];

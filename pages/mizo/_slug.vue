@@ -159,7 +159,7 @@
           Category:
           <div
             v-if="post.post.category"
-            class="inline-flex items-center bg-white leading-none text-pink-600 rounded-full p-0 shadow text-teal text-sm"
+            class="inline-flex items-center bg-white leading-none rounded-full p-0 shadow text-teal text-sm"
           >
             <nuxt-link
               :to="{
@@ -168,7 +168,7 @@
               }"
             >
               <span
-                class="inline-flex bg-purple-800 text-white rounded-full h-6 px-3 p-4 justify-center items-center"
+                class="inline-flex bg-indigo-800 text-white rounded-full h-6 px-3 p-4 justify-center items-center"
                 >{{ post.post.category }}</span
               >
             </nuxt-link>
@@ -212,7 +212,7 @@
           </div>
 
           <!-- comments -->
-          <p class="text-lg">Comments</p>
+          <p class="text-left mt-2">Comments</p>
           <div>
             <comments
               v-if="post.post.id"

@@ -26,7 +26,7 @@ export default {
     // {src: '~/plugins/quill/editor.js',mode:'client'},
     {src: '~/plugins/telephone.js',mode:'client'},
     {src: '~/plugins/analytics.js',mode:'client'},
-     '@/plugins/persisted.client.js',
+    //  '@/plugins/persisted.client.js',
 
     // {src: '~/plugins/persisted.js',mode:'client'},
 
@@ -47,6 +47,8 @@ export default {
     '@nuxtjs/composition-api/module',
     '@pinia/nuxt',
     '@nuxtjs/dotenv',
+    '@vueuse/nuxt',
+
 
 
   ],

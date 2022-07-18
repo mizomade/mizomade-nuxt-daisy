@@ -4,9 +4,10 @@
 
 <!-- <comment-modal v-if="id" :id="id" @refresh="refressh"></comment-modal> -->
 <div>
+  <br/>
 <inline-comment-modal :id="id" v-if="userStore.isLoggedIn"></inline-comment-modal>
 
-<nuxt-link v-else to="/accounts/login" class="btn btn-primary ">Login to comment </nuxt-link>
+<nuxt-link v-else to="/accounts/login" class="bg-indigo-700 text-white px-6 my-4 py-3 cursor-pointer rounded-md">Login to comment </nuxt-link>
 
 
 </div>
@@ -20,7 +21,7 @@
           <img :src=" S3+'static/' + comment.profilephoto" alt="" srcset="" class="h-8 w-8 min-w-8 min-h-8 rounded-full object-cover">
      </router-link>
       <!-- names and content -->
-      <div class="lg:mx-4 px-4 mx-4 w-4/5 flex flex-col flex-wrap bg-gray-100 rounded-md">
+      <div class="lg:mx-4 px-4 mx-4 w-4/5 flex flex-col flex-wrap bg-gray-100 rounded-md py-2">
           <p class="font-medium py-b-4 text-md text-gray-800">{{comment.user}}
             <span class="font-extralight text-xs"> , {{dateformat(comment.date)}}</span></p>
 <p class="pt-2 text-sm">{{comment.comment}}</p>
