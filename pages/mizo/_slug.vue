@@ -5,8 +5,13 @@
    -->
       <step-loader></step-loader>
     </div>
+
     <div v-else class="container lg:container mx-auto">
-      <div class="md:mx-auto lg:mx-40 xl:mx-40">
+      <div v-if="error"> 
+      <PageNotFound/>
+      
+      </div>
+      <div class="md:mx-auto lg:mx-40 xl:mx-40" v-else>
         <!-- edit delete draft -->
         <span class="flex flex-row lg:my-2 mt-20" v-if="isAuthor">
           <!-- DELETE MODAL -->
@@ -241,6 +246,7 @@ import { API_URL } from "../../API";
 // import {  useMeta,ref } from '@nuxtjs/composition-api'
 
 import StepLoader from "../../components/Wait/StepLoader.vue";
+import PageNotFound from './../../components/PageNotFound.vue';
 
 import ImageAuthor from "./../../components/ImageAuthor.vue";
 import Comments from "./../../components/Comment/Comments.vue";
@@ -326,7 +332,9 @@ export default {
     bookmark,
     share,
     PostCardMinimal,
-  },
+    PageNotFound
+ 
+ },
 
   data() {
     return {
@@ -341,7 +349,7 @@ export default {
       bk: null,
       modalalert: false,
       q: "",
-      showModal: false,
+      error:false,
     };
   },
 
@@ -405,7 +413,12 @@ export default {
         this.title=this.post.post.title;
         this.name = this.post.post.author;
         // this.hid = this.post.post.title + this.post.post.category + this.post.post.tags;
+        this.error = false;
         this.loading = false;
+      }).catch(()=>{
+        this.loading = false
+        this.error = true
+
       });
   },
 

@@ -1,7 +1,7 @@
 <!-- ./src/components/BlogPage.vue -->
 
 <template>
-  <div id="blog-home" class="mx-auto">
+  <div id="blog-home" class="mx-auto mb-72">
     <h1 class="text-center text-xl mt-2 ">
       Category : " <span class="font-bold">{{ $route.params.category }}</span
       >"

@@ -108,7 +108,7 @@
         </button>
       </div>
 
-      <h3 @click.prevent="back" class="underline">Back</h3>
+      <h3 @click.prevent="back" class="underline cursor-pointer">Back</h3>
       <div
         class="fb-like"
         data-share="true"
