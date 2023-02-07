@@ -1,8 +1,8 @@
 <template>
   <div>
     <!-- The button to open modal -->
-    <label for="my-modal-comment" class="btn modal-button">Add Comment .. </label>
-    
+    <label for="my-modal-comment" class=" modal-button px-10  bg-slate-200 rounded-md  py-4 cursor-pointer text-sm ">Add Comment .. </label>
+    <div class="my-10"></div>
 
     <!-- Put this part before </body> tag -->
     <input type="checkbox" id="my-modal-comment" class="modal-toggle" />

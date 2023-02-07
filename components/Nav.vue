@@ -79,7 +79,7 @@
     <!-- --------------------- -->
 
     <!-- navbar -->
-    <nav class="fixed top-0 z-10 bg-white shadow-sm w-full">
+    <nav class="fixed top-0 z-10 shadow-sm w-full bg-white">
       <div class="max-w-6xl mx-auto px-4">
         <div class="flex justify-between">
           <div class="md:hidden flex items-center">
@@ -164,7 +164,7 @@
                     name: 'category-category',
                     params: { category: categories.name },
                   }"
-                  class="py-4 px-2 text-gray-500 font-medium hover:text-purple-900 transition duration-300"
+                  class="py-4 px-2 text-gray-700  font-medium hover:text-indigo-900 transition duration-300"
                 >
                   {{ categories.name }}
                 </nuxt-link>
@@ -252,9 +252,8 @@
                         <path
                           stroke-linecap="round"
                           stroke-linejoin="round"
-                          d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z"
-                        /></svg
-                      >Dashboard
+                          d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z"/></svg>
+                          Dashboard
                     </nuxt-link>
                   </li>
                   <li>

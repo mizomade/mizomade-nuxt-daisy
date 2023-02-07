@@ -81,7 +81,7 @@
         <div class="mx-2 lg:mx-0 mb-3">
           <!-- style="font-family: 'Scheherazade New'" -->
           <h1
-            class="break-words text-left text-current font-bold text-3xl lg:text-5xl py-4 title"
+            class="break-words text-left text-black text-current font-bold text-3xl lg:text-5xl py-4 title"
           >
             {{ post.post.title }}
           </h1>
@@ -157,7 +157,7 @@
 
         <!-- body -->
 
-        <div id="editor" class="font-lg overflow-hidden"></div>
+        <div id="editor" class="font-lg overflow-hidden dark:text-gray-50"></div>
 
         <div class="mx-2 my-1 text-left">
           <!-- Category -->
@@ -173,7 +173,7 @@
               }"
             >
               <span
-                class="inline-flex bg-indigo-800 text-white rounded-full h-6 px-3 p-4 justify-center items-center"
+                class="inline-flex bg-indigo-700 text-white rounded-full h-6 px-3 p-4 justify-center items-center"
                 >{{ post.post.category }}</span
               >
             </nuxt-link>
@@ -450,6 +450,15 @@ export default {
 #editor > div.ql-editor > p:nth-child(n){
 font-size: 16px;
 }
+
+/* Dark mode */
+/* @media (prefers-color-scheme: dark) {
+    body {
+        background-color: black;
+        color: white;
+    }
+
+} */
 
 
 </style>

@@ -1,5 +1,5 @@
 <template>
-<div id="app">
+<div id="app" class="bg-white">
   <!-- <top-nav></top-nav> -->
   <Nav />
   <Nuxt class="container mt-16  lg:mt-20" />

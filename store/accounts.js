@@ -32,6 +32,7 @@ import {API_URL} from './../API'
 
         }
       },
+   
 
       getters:{
           key(state){
@@ -158,4 +159,6 @@ import {API_URL} from './../API'
       }
 
   // other options...
-})
+},
+
+)

@@ -28,7 +28,7 @@ export default {
     {src: '~/plugins/analytics.js',mode:'client'},
     //  '@/plugins/persisted.client.js',
 
-    // {src: '~/plugins/persisted.js',mode:'client'},
+    {src: '~/plugins/persisted.client.js',mode:'client'},
 
 
     // { src: "~/plugins/vue-js-modal", mode: "client" }
